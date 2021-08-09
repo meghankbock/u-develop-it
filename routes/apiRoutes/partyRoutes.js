@@ -21,14 +21,14 @@ router.get('/parties', (req, res) => {
 router.get('/party/:id', (req, res) => {
     const sql = `SELECT * FROM parties WHERE id = ?`;
     const params = [req.params.id];
-    db.query(sql, params, (err, row) => {
+    db.query(sql, params, (err, rows) => {
         if (err) {
             res.status(400).json({ error: err.message });
             return;
         }
         res.json({
             message: 'sucess',
-            data: row
+            data: rows
         });
     });
 });
